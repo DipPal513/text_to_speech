@@ -3,6 +3,10 @@ import axios from "axios";
 import { css } from "@emotion/react";
 import HashLoader from "react-spinners/HashLoader";
 
+import dotenv from "dotenv"; // Import dotenv
+
+// Load environment variables
+
 const override = css`
   display: block;
   margin: 0 auto;
@@ -31,7 +35,7 @@ const App = () => {
       url: "https://cloudlabs-text-to-speech.p.rapidapi.com/synthesize",
       headers: {
         "content-type": "application/x-www-form-urlencoded",
-        "X-RapidAPI-Key": process.env.API_KEY, // Replace with your actual API key
+        "X-RapidAPI-Key": import.meta.env.VITE_API_KEY, // Use REACT_APP_ prefix
         "X-RapidAPI-Host": "cloudlabs-text-to-speech.p.rapidapi.com",
       },
       data: encodedParams,
@@ -55,7 +59,7 @@ const App = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white w-96 p-8 rounded-lg shadow-lg">
-        <h1 className="text-2xl font-bold mb-4">Text to Speech Converter</h1>
+        <h1 className="text-2xl font-bold mb-4">Text To Speech Converter</h1>
         <textarea
           placeholder="Enter your text"
           value={text}
